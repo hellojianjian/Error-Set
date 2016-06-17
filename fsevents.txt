@@ -19,7 +19,7 @@ webpack: bundle is now VALID.
 马不停蹄的去更新node版本
 node -v
 	v5.6.0
-npm install -g n 
+sudo npm install -g n 
 sudo n stable //更新到稳定的版本
 
 完美解决（臭不要脸）
