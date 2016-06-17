@@ -1,0 +1,25 @@
+咳咳，对于菜鸟来说这个问题出现的很诡异 - -。
+
+昨天使用webpack-dev-service没有任何问题，今天使用就蹦跶出了一条条的异常 (ㄒoㄒ)
+webpack: bundle is now VALID.
+2016-06-17 10:43 node[56722] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-21)
+2016-06-17 10:43 node[56722] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-21)
+2016-06-17 10:43 node[56722] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-21)
+2016-06-17 10:43 node[56722] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-21)
+……
+
+首先代码没有被改动过肯定不是代码的问题（谁敢说我写的代码有问题我搞死他），既然这样只能找到这个库文件然后粗暴的删除它！
+大爷我重新安装npm install fsevents。
+然而并没有啥作用。。
+
+接着去百度，度娘到的答案惨不忍睹，死撑了半小时后跑去谷歌。
+好的，机智的我直接alt+f搜索thank关键词找到了一个答案。
+「I was having this issue as well. Upgrading to node v0.11 fixed it.」
+
+马不停蹄的去更新node版本
+node -v
+	v5.6.0
+npm install -g n 
+sudo n stable //更新到稳定的版本
+
+完美解决（臭不要脸）
