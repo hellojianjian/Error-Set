@@ -1,0 +1,25 @@
+啊啊啊啊啊啊啊，这个问题是我解决上一个「node-fsevents」问题正在沾沾自喜的时候出现的，忍了这么多天不能gulp无法忍一定要ac！
+
+node升级到6.2.1后，gulp报错
+(node:66269) fs: re-evaluating native module sources is not supported. If you are using the graceful-fs module, please update it to a more recent version.
+谷歌了是node版本的问题，于是乎我降级到v5.6.0
+
+天真！！(╯‵□′)╯︵┻━┻
+
+gulp报错！！！
+2016-06-21 16:11 gulp[66601] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-21)
+2016-06-21 16:11 gulp[66601] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-21)
+events.js:154
+      throw er; // Unhandled 'error' event
+      ^
+Error: watch null EMFILE
+    at exports._errnoException (util.js:856:11)
+    at FSEvent.FSWatcher._handle.onchange (fs.js:1296:21)
+神他妈这是我「node-fsevents」里面出现的问题！！换个gulp的马甲差点就认不出了！
+
+嗯，冷静的我找到了出错点，是因为 gulpfile.js 中 gulp.watch(xxxxx) 这条语句出了问题。
+通过一堆的黑盒测试 = =#
+我使用 fs.realpathSync 来获取路径没有任何问题，可是通过谷歌没有找到通配符 orz
+
+出乎意料的事情发生了，我还原回来，gulp 正常编译（以前也出现过）。
+水逆了吗！！！
