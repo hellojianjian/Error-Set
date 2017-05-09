@@ -23,3 +23,6 @@ sudo npm install -g n
 sudo n stable //更新到稳定的版本
 
 完美解决（臭不要脸）
+
+
+注：使用sublime text运行webpack --watch时也会报这个错，重启sublime text后解决。 不知道原因，占用了某个资源？
