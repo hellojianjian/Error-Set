@@ -22,6 +22,10 @@ Module build failed: ReferenceError: [BABEL] /Users/lin/Documents/code/cod/src/e
   Unknown option: /Users/lin/Documents/code/.babelrc.presets balabala
 感觉是babale的问题，于是接着一堆npm install
 npm install -D babel-preset-es2015 babel-preset-react babel-preset-stage-0
+然后修改babel的版本
+"babel-core": "^6.0.0",
+"babel-loader": "^6.0.0",
+更新 npm update
 
 成功npm run dev~
 
