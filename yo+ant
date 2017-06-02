@@ -1,0 +1,34 @@
+最近做一个react+react-router+antd的项目，由于懒就直接使用yoman脚手架生成环境。 然后噩梦就开始了 - -#
+
+yo成功后，接着安装antd，成功。
+antd文档中有按需加载，对性能十分要求的我(｡･∀･)ﾉﾞ自动不能错过。
+
+$ npm install -D babel-plugin-import
+
+.babelrc
+{
+  "presets": [
+    "es2015",
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+  	["import", [{ "libraryName": "antd", "style": "css" }]]
+  ]
+}
+
+在这里始终报错，
+Module build failed: ReferenceError: [BABEL] /Users/lin/Documents/code/cod/src/entry.js: 
+  Unknown option: /Users/lin/Documents/code/.babelrc.presets balabala
+感觉是babale的问题，于是接着一堆npm install
+npm install -D babel-preset-es2015 babel-preset-react babel-preset-stage-0
+
+成功npm run dev~
+
+进入页面后发现有warning
+Warning: Accessing PropTypes via the main React package is deprecated. Use the prop-types package from npm instead.
+Warning: RouterContext: React.createClass is deprecated and will be removed in version 16. 
+  Use plain JavaScript classes instead. 
+  If you're not yet ready to migrate, create-react-class is available on npm as a drop-in replacement.
+因为是用了antd的原因，antd中使用了 React.propTypes 和 React.createClass，好像是要不能用了。
+于是 cnpm install -D prop-types create-react-class，没有任何效果。 放弃折腾先用着 _(:з」∠)_
